@@ -1,0 +1,12 @@
+CREATE TABLE Entity (
+    Id UNIQUEIDENTIFIER,
+    Name NVARCHAR(50) NOT NULL,
+    Level INT NOT NULL DEFAULT 1,
+
+    Hp INT NOT NULL,
+    Strength INT NOT NULL,
+    Stamina INT NOT NULL,
+
+    CONSTRAINT PK_Entity PRIMARY KEY (Id),
+    CONSTRAINT UQ_Name UNIQUE (Name),
+);
