@@ -13,7 +13,7 @@ CREATE TABLE Entity (
 
 CREATE TABLE Class (
     Id UNIQUEIDENTIFIER DEFAULT NEWSEQUENTIALID(),
-    Name VARCHAR(50),
+    Name VARCHAR(50) NOT NULL,
 
     BonusStrength INT,
     BonusStamina INT
@@ -26,6 +26,15 @@ CREATE TABLE Supply (
     Description VARCHAR(255),
 
     CONSTRAINT PK_Supply PRIMARY KEY (Id)
+)
+
+CREATE TABLE Bag (
+    EntityId UNIQUEIDENTIFIER,
+    SupplyId UNIQUEIDENTIFIER,
+    Quantity INT,
+
+    CONSTRAINT FK_Bag_entity FOREIGN KEY (EntityId) REFERENCES Entity (Id),
+    CONSTRAINT FK_Bag_supply FOREIGN KEY (SupplyId) REFERENCES Supply (Id),
 )
 
 --Relation 1-N ; Entity - Class
